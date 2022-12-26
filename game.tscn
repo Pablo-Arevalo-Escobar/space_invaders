@@ -7,7 +7,7 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 
-[node name="game" type="Node2D"]
+[node name="game" type="Node2D" groups=["Enemies"]]
 script = ExtResource( 3 )
 
 [node name="Background" type="Sprite" parent="."]
@@ -27,4 +27,9 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="Player"]
 texture = ExtResource( 2 )
 
+[node name="Timer" type="Timer" parent="Player"]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="area_entered" from="Player" to="Player" method="_on_Player_area_entered"]
+[connection signal="playerReady" from="Player" to="." method="_on_Player_playerReady"]
