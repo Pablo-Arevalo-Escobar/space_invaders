@@ -22,7 +22,8 @@ func _ready():
 func _shoot():
 
 	var b = bullet_scene.instance()
-	b.position = position + Vector2(0,-10)
+	b.init(Vector2(0,-1.0))
+	b.position = position + Vector2(0,-20)
 	get_parent().add_child(b);
 
 
@@ -37,8 +38,10 @@ func _process(delta):
 	if Input.is_action_pressed("move_down"):
 		velocity.y += 1
 	if Input.is_action_pressed("shoot"):
-		_shoot()
-	if Input.is_action_pressed("spawn"):
+		if($Timer.is_stopped()):
+			$Timer.start()
+			_shoot()
+	if Input.is_action_just_pressed("spawn"):
 		if ($Timer.is_stopped()):
 			$Timer.start()
 			emit_signal("playerReady")
