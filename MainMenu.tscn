@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://art/background.png" type="Texture" id=2]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 258, 151 )
+scale = Vector2( 1.01176, 1.01333 )
+texture = ExtResource( 2 )
+
+[node name="StartButton" type="Button" parent="."]
+margin_left = 223.0
+margin_top = 205.0
+margin_right = 299.0
+margin_bottom = 225.0
+text = "Start"
+
+[node name="ExitButton" type="Button" parent="."]
+margin_left = 219.0
+margin_top = 236.0
+margin_right = 302.0
+margin_bottom = 259.0
+text = "Exit"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_ExitButton_pressed"]
